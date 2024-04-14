@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[english]{babel}
+\usepackage{authblk, amsmath, graphicx}
+\usepackage{natbib, xcolor}
+\usepackage{caption}
+\usepackage{tablefootnote}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage[flushleft]{threeparttable}
+
+\definecolor{bonnblue}{RGB}{0,79,158}
+
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+
+\begin{document}
+
+\include{titlepage}
+
+% ============================================================
+\renewcommand*\contentsname{Table of Contents}
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+%============================================================
+
+\input{sections/1-intro}
+
+\input{sections/2-literature}
+
+\input{sections/3-empirical}
+
+\input{sections/4-results}
+
+\input{sections/5-conclusion}
+
+\pagebreak
+
+\bibliographystyle{apalike}
+\bibliography{ref}
+
+\pagebreak
+
+\input{sections/appendix}
+
+\pagebreak
+
+\textbf{Statement of Authorship:} \\
+
+\noindent I hereby confirm that the work presented has been performed and interpreted solely by myself except for where I explicitly identified the contrary. I assure that this work has not been presented in any other form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.
+
+\end{document}
