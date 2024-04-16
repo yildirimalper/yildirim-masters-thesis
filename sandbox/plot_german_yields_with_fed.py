@@ -12,8 +12,8 @@ PROJECT_DIR = Path().resolve()
 data = pd.read_pickle(PROJECT_DIR / 'processed_data' / 'german_govt_bond_yields.pkl')
 data.set_index('Date', inplace=True)
 data.index = pd.to_datetime(data.index)
-#! Since the earliest ECB meeting is 1999-03-04
-cutoff_date = pd.to_datetime('1999-01-01')
+#! I determine German re-unification as cutoff
+cutoff_date = pd.to_datetime('1990-01-01')
 data = data[data.index >= cutoff_date]
 
 column_names = ["MP Dates"]
@@ -69,28 +69,28 @@ data["10y Yield - 3dWindow Change Cumulative"] = data["10y Yield - 3dWindow Chan
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey")
-plt.plot(data.index, data["10y Yield - 3dWindow Change Cumulative"], label="10y German Bund yield change around ECB meetings", color="red")
-plt.title("3-day windows around ECB meetings", fontsize=14)
+plt.plot(data.index, data["10y Yield - 3dWindow Change Cumulative"], label="10y German Bund yield change around Fed meetings", color="red")
+plt.title("3-day windows around Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_3d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_3d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
-# Outside 3-day windows around ECB meetings
+# Outside 3-day windows around Fed meetings
 # ===============================================================================
 data["10y Yield - Outside 3dWindow Change Cumulative"] = data["10y Yield - Outside 3dWindow Change"].cumsum()
 
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey", alpha=0.9)
-plt.plot(data.index, data["10y Yield - Outside 3dWindow Change Cumulative"], label="10y German Bund yield change outside of ECB window", color="silver", alpha=0.9)
-plt.title("Days outside 3-day ECB window", fontsize=14)
+plt.plot(data.index, data["10y Yield - Outside 3dWindow Change Cumulative"], label="10y German Bund yield change outside of Fed window", color="silver", alpha=0.9)
+plt.title("Days outside 3-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_3d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_3d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -104,12 +104,12 @@ data["10y Yield - 5dWindow Change Cumulative"] = data["10y Yield - 5dWindow Chan
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey")
-plt.plot(data.index, data["10y Yield - 5dWindow Change Cumulative"], label="10y German Bund yield change around ECB meetings", color="red")
-plt.title("5-day windows around ECB meetings", fontsize=14)
+plt.plot(data.index, data["10y Yield - 5dWindow Change Cumulative"], label="10y German Bund yield change around Fed meetings", color="red")
+plt.title("5-day windows around Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_5d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_5d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -120,12 +120,12 @@ data["10y Yield - Outside 5dWindow Change Cumulative"] = data["10y Yield - Outsi
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey", alpha=0.9)
-plt.plot(data.index, data["10y Yield - Outside 5dWindow Change Cumulative"], label="10y German Bund yield change outside of ECB window", color="silver", alpha=0.9)
-plt.title("Days outside 5-day ECB window", fontsize=14)
+plt.plot(data.index, data["10y Yield - Outside 5dWindow Change Cumulative"], label="10y German Bund yield change outside of Fed window", color="silver", alpha=0.9)
+plt.title("Days outside 5-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_5d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_5d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -139,12 +139,12 @@ data["10y Yield - 7dWindow Change Cumulative"] = data["10y Yield - 7dWindow Chan
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey")
-plt.plot(data.index, data["10y Yield - 7dWindow Change Cumulative"], label="10y German Bund yield change around ECB meetings", color="red")
-plt.title("7-day windows around ECB meetings", fontsize=14)
+plt.plot(data.index, data["10y Yield - 7dWindow Change Cumulative"], label="10y German Bund yield change around Fed meetings", color="red")
+plt.title("7-day windows around Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_7d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_7d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -155,10 +155,10 @@ data["10y Yield - Outside 7dWindow Change Cumulative"] = data["10y Yield - Outsi
 # Plot the data
 plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10y Yield Change Cumulative"], label="10y German Bund yield", color="dimgrey", alpha=0.9)
-plt.plot(data.index, data["10y Yield - Outside 7dWindow Change Cumulative"], label="10y German Bund yield change outside of ECB window", color="silver", alpha=0.9)
-plt.title("Days outside 7-day ECB window", fontsize=14)
+plt.plot(data.index, data["10y Yield - Outside 7dWindow Change Cumulative"], label="10y German Bund yield change outside of Fed window", color="silver", alpha=0.9)
+plt.title("Days outside 7-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_ecb_7d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'german_bonds' / 'DE_Fed_7d_10y_yield_outside-window_cumulative_change.png')
 plt.show()

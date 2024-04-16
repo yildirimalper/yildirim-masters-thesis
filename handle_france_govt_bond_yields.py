@@ -33,11 +33,11 @@ data30y["Date"] = pd.to_datetime(data30y["Date"])
 data30y = data30y.drop(columns=["Open", "High", "Low", "Change %"])
 data30y = data30y.rename(columns={"Price": "30y Yield"})
 
-data_1_2 = data1y.merge(data2y, on="Date", how="inner")
-data_1_2_5 = data_1_2.merge(data5y, on="Date", how="inner")
-data_1_2_5_10 = data_1_2_5.merge(data10y, on="Date", how="inner")
-data_1_2_5_10_20 = data_1_2_5_10.merge(data20y, on="Date", how="inner")
-data = data_1_2_5_10_20.merge(data30y, on="Date", how="inner")
+data_1_2 = data1y.merge(data2y, on="Date", how="outer")
+data_1_2_5 = data_1_2.merge(data5y, on="Date", how="outer")
+data_1_2_5_10 = data_1_2_5.merge(data10y, on="Date", how="outer")
+data_1_2_5_10_20 = data_1_2_5_10.merge(data20y, on="Date", how="left")
+data = data_1_2_5_10_20.merge(data30y, on="Date", how="left")
 
 data = data.sort_values(by="Date")
 
