@@ -1,6 +1,8 @@
-# This Python script contains a list of dates for FOMC meetings from 1989 to 1992.
-# The dates are based on Hillenbrand's (2020) Appendix of FOMC meeting dates.
-# The dates are collected using AI-assisted tool to extract dates from the PDF file.
+# This Python script contains a list of dates for FOMC meetings.
+# The dates are based on Hillenbrand's (2020) Appendix of FOMC meeting dates,
+# and collected using AI-assisted tool to extract dates from the PDF file.
+# The meeting from the second half of 2021 and onwards are collected from:
+# https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
 # This list can be used for any analysis that requires knowledge of FOMC meeting dates 
 # during this period.
 
@@ -138,6 +140,19 @@ fomc_meeting_date = [
 
     # 2021
     "2021-01-27", "2021-03-17", "2021-04-28", "2021-06-16",
+    "2021-07-28", "2021-09-22", "2021-11-03", "2021-12-15",
+
+    # 2022
+    "2022-01-26", "2022-03-16", "2022-05-04", "2022-06-15",
+    "2022-07-27", "2022-09-21", "2022-11-02", "2022-12-14",
+
+    # 2023
+    "2023-02-01", "2023-03-22", "2023-05-03", "2023-06-14",
+    "2023-07-26", "2023-09-20", "2023-11-01", "2023-12-13",
+
+    # 2024
+    "2024-01-31", "2024-03-20", "2024-05-01", "2024-06-12",
+    "2024-07-31", "2024-09-18", "2024-10-30", "2024-12-11",
 ]
 
 # Export the list to a CSV file
