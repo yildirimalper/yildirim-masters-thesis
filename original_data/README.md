@@ -1,6 +1,7 @@
 # Notes on Bond Yield Data
 
 + `australian_bond_yields` : Includes both Australian government bond yields and zero-coupon interest rates (analytical series).
++ `boc_bond_yield` : Yield on Canadian government bonds. A description of the methodology used to derive the yield curves is provided in Bolder, Johnson, and Metzler (2004), " An Empirical Analysis of the Canadian Term Structure of Zero-Coupon Interest Rates."
 + `boe_gilt_yield` : Yields on UK government bonds (also known as gilts).
 + `france_oat_yields` : French OATs (*Obligations assimilables du Trésor*) yield data for 1, 2, 5, 10, 20, 30 years.
 + `german_bund_yields` : Yield data for German Bunds (for 1, 2, 5, 10, 20, 30 years)
