@@ -38,5 +38,25 @@ result = pd.concat(frames)
 empty_row_indices = result[result.isnull().all(axis=1)].index
 print('Indices of completely empty rows:', empty_row_indices)
 
+result.columns = [f"{col}yr" if isinstance(col, float) else col for col in result.columns]
+result.rename(columns={
+    '1.0yr' : '1yr',
+    '2.0yr' : '2yr',
+    '3.0yr' : '3yr',
+    '4.0yr' : '4yr',
+    '5.0yr' : '5yr',
+    '6.0yr' : '6yr',
+    '7.0yr' : '7yr',
+    '8.0yr' : '8yr',
+    '9.0yr' : '9yr',
+    '10.0yr' : '10yr',
+    '12.0yr' : '12yr',
+    '15.0yr' : '15yr',
+    '20.0yr' : '20yr',
+    '25.0yr' : '25yr',
+    '30.0yr' : '30yr',
+    '40.0yr' : '40yr',
+}, inplace=True)
+
 result.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'uk_spot_yields.csv', index=True)
 result.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'uk_spot_yields.pkl')

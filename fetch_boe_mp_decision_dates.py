@@ -4,6 +4,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 import csv
+import pandas as pd
+import datetime
+from pathlib import Path
 
 driver = webdriver.Chrome()  # or whichever browser you're using
 driver.get("https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/monetary-policy-summary-and-minutes")
@@ -37,3 +40,11 @@ with open('output.csv', 'w', newline='') as file:
             break  # no more pages
 
 driver.quit()
+
+# ============================================================
+# ! Simply, use the Excel file
+
+PROJECT_DIR = Path().resolve()
+
+data = pd.read_excel(PROJECT_DIR / 'original_data' / 'mpcvoting.xlsx')
+data.to_csv(PROJECT_DIR / 'processed_data' / 'monetary_policy_dates' / 'boe_mpd.csv', index=False)
