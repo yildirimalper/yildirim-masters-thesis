@@ -9,7 +9,7 @@ import datetime
 from pathlib import Path
 
 driver = webdriver.Chrome() 
-driver.get("https://www.moneycontrol.com/economic-calendar/canada-boc-monetary-policy-report/3069585 ")
+driver.get("https://www.moneycontrol.com/economic-calendar/canada-boc-monetary-policy-report/3069585")
 # /html/body/section/div/div/div[2]/div[5]/table/tbody/tr[4]/td[1]/span
 
 # Open the CSV file for writing
@@ -28,12 +28,14 @@ with open('processed_data/monetary_policy_dates/boc_mpd_raw.csv', 'w', newline='
         show_more_button = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/div[2]/div/a')[0]
         show_more_button.click()
 
-        # Extract dates
+        # Extract dates and contents
         date_elements = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/table/tbody/tr/td[1]/span')
+        content_elements = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/table/tbody/tr/td[3]')
 
-        # Write dates to the CSV file
-        for date_element in date_elements:
-            writer.writerow([date_element.text])
+        # Write dates to the CSV file if the content is either "BoC Interest Rate Decision" or "Interest Rate Decision"
+        for date_element, content_element in zip(date_elements, content_elements):
+            if content_element.text in ["BoC Interest Rate Decision", "Interest Rate Decision", "Interest Rate Mar", "Interest Rate Apr", "Interest Rate Feb", "Interest Rate Jan", "Interest Rate Dec", "Interest Rate Nov", "Interest Rate May", "Interest Rate Jun", "Interest Rate Jul", "Interest Rate Aug", "Interest Rate Sep", "Interest Rate Oct"]:
+                writer.writerow([date_element.text])
 
 # Close the driver
 driver.quit()
