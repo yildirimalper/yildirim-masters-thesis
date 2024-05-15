@@ -16,5 +16,11 @@ dxy.rename(columns={"Adj Close": "dxy", "Date": "date"},
 
 # In order to drop NaN values
 dxy.replace("null", np.nan, inplace=True)
+dxy.dropna(inplace=True)
 
-dxy['date'] = pd.to_datetime(dxy['date'], format='%d-%m-%Y')
+# Convert "date" column to datetime
+dxy['date'] = pd.to_datetime(dxy['date'], format='%d/%m/%Y')
+
+# Export data
+dxy.to_csv(PROJECT_DIR / 'processed_data' / 'control_variables' / 'dxy.csv', index=False)
+dxy.to_pickle(PROJECT_DIR / 'processed_data' / 'control_variables' / 'dxy.pkl')
