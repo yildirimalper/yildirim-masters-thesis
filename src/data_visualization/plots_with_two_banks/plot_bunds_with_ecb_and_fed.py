@@ -18,8 +18,6 @@ column_names = ["Fed MP Dates"]
 fed_mpdd = pd.read_csv("processed_data/monetary_policy_dates/fed_mpd.csv", header=None, names=column_names)
 fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
-data = data.loc[data.index >= '1999-01-01']
-
 data.rename(columns={"1y Yield" : "1yr",
                     "2y Yield"  : "2yr",
                     "5y Yield"  : "5yr",
@@ -29,6 +27,7 @@ data.rename(columns={"1y Yield" : "1yr",
                     inplace=True)
 
 data.set_index('Date', inplace=True)
+data = data.loc[data.index >= '1999-01-01']
 
 # For ECB
 mpdd["ECB 3dWindow"] = mpdd["ECB MP Dates"].apply(create_3d_window)

@@ -19,7 +19,9 @@ fed_mpdd = pd.read_csv("processed_data/monetary_policy_dates/fed_mpd.csv", heade
 fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
-data.index = pd.to_datetime(data.index)
+data['Date'] = pd.to_datetime(data['Date'])
+data.set_index('Date', inplace=True)
+data = data.loc[data.index >= '2000-01-01']
 
 # For SNB
 mpdd["SNB 3dWindow"] = mpdd["SNB MP Dates"].apply(create_3d_window)
@@ -49,8 +51,6 @@ data["In SNB 7dWindow"] = data.index.isin(snb_seven_day_windows)
 data["In Fed 3dWindow"] = data.index.isin(fed_three_day_windows)
 data["In Fed 5dWindow"] = data.index.isin(fed_five_day_windows)
 data["In Fed 7dWindow"] = data.index.isin(fed_seven_day_windows)
-
-data.rename(columns={"10.0yr" : "10yr"}, inplace=True)
 
 # Calculate the "10yr" change for each date in the `data` DataFrame.
 data["10yr Change"] = data["10yr"].diff()
