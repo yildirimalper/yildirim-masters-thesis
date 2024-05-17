@@ -20,7 +20,6 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-data = data.loc[data.index >= '2008-01-01']
 
 # For RBA
 mpdd["RBA 3dWindow"] = mpdd["RBA MP Dates"].apply(create_3d_window)
@@ -73,6 +72,9 @@ data["Fed 10yr - 7dWindow Change"] = data["10yr Change"].where(data["In Fed 7dWi
 data["Fed 10yr - Outside 3dWindow Change"] = data["10yr Change"].where(~data["In Fed 3dWindow"], 0)
 data["Fed 10yr - Outside 5dWindow Change"] = data["10yr Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed 10yr - Outside 7dWindow Change"] = data["10yr Change"].where(~data["In Fed 7dWindow"], 0)
+
+data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_australian_spot_yields.csv')
+data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_australian_spot_yields.pkl')
 
 # ===============================================================================
 # Plot 10y Australian Cumulative Yield Change (Hillenbrand, Figure 1, Panel A)

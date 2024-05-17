@@ -75,6 +75,8 @@ data["Fed 10yr - Outside 3dWindow Change"] = data["10yr Change"].where(~data["In
 data["Fed 10yr - Outside 5dWindow Change"] = data["10yr Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed 10yr - Outside 7dWindow Change"] = data["10yr Change"].where(~data["In Fed 7dWindow"], 0)
 
+data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_uk_spot_yields.csv')
+data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_uk_spot_yields.pkl')
 
 # ===============================================================================
 # Plot 10y yield over time
