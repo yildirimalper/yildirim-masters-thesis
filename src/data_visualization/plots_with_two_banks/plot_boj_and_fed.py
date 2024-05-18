@@ -20,7 +20,7 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index, format='%d/%m/%Y')
-data = data.loc[data.index >= '1999-01-01']
+data = data.loc[data.index >= '1989-07-01']
 
 # For BoJ
 mpdd["BoJ 3dWindow"] = mpdd["BoJ MP Dates"].apply(create_3d_window)
@@ -85,11 +85,12 @@ data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change
 data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change Cumulative"].ffill()
 
 plt.figure(figsize=(10, 6))
-plt.plot(data.index, data["10yr Change Cumulative"], label="10y UK gilt yield", color="dimgrey")
+plt.plot(data.index, data["10yr Change Cumulative"], label="10y Japanese bond yield", color="dimgrey")
 plt.plot(data.index, data["BoJ 10yr - 3dWindow Change Cumulative"], label="10y Japanese bond yield change around the BoJ meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y Japanese bond yield change around the Fed meetings", color="red")
 plt.title("3-day windows around the BoJ and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
+plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'japanese_bonds_1989_figure1a.png')
 plt.show()
