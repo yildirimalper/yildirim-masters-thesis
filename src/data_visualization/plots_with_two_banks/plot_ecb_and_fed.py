@@ -20,7 +20,7 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-data = data.loc[data.index >= '2008-01-01']
+#data = data.loc[data.index >= '2008-01-01']
 
 # For ECB
 mpdd["ECB 3dWindow"] = mpdd["ECB MP Dates"].apply(create_3d_window)
@@ -90,9 +90,16 @@ plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10yr Change Cumulative"], label="10y AAA-rated European bond yield", color="dimgrey")
 plt.plot(data.index, data["ECB 10yr - 3dWindow Change Cumulative"], label="10y AAA-rated European yield change around the ECB meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y AAA-rated European yield change around the Fed meetings", color="red")
+# the EU QEs
+plt.axvspan('2010-05-10', '2011-03-25', color='grey', alpha=0.3, label="ECB's Securities Markets Programme")
+plt.axvspan('2011-08-08', '2012-09-06', color='grey', alpha=0.3)
+# the US QEs
+plt.axvspan('2008-11-25', '2010-03-31', color='wheat', alpha=0.3, label="Quantitative Easing by the Fed")
+plt.axvspan('2010-11-03', '2011-06-30', color='wheat', alpha=0.3)
+plt.axvspan('2012-09-13', '2014-10-29', color='wheat', alpha=0.3)
 plt.title("3-day windows around the ECB and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'european_bonds_2008_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'european_bonds_2008_figure1a.png')
 plt.show()

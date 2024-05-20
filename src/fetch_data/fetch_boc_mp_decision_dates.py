@@ -9,32 +9,29 @@ import datetime
 from pathlib import Path
 
 driver = webdriver.Chrome() 
-driver.get("https://www.moneycontrol.com/economic-calendar/canada-boc-monetary-policy-report/3069585")
+driver.get("https://www.fxstreet.com/economic-calendar/event/7035bb7e-d65f-4e72-a0ba-f77baede0207")
 # /html/body/section/div/div/div[2]/div[5]/table/tbody/tr[4]/td[1]/span
+# //*[@id="Content_C025_Col00"]/div[2]/div/div/div[3]/div/div/div/div/table[2]/tbody/tr[9]/td[1]/span
 
 # Open the CSV file for writing
 with open('processed_data/monetary_policy_dates/boc_mpd_raw.csv', 'w', newline='') as file:
     writer = csv.writer(file)
 
     # Repeat the following steps for each page
-    for _ in range(60):  # adjust the range depending on the number of pages
-        time.sleep(10)  # wait for the page to load
+    for _ in range(2):  # adjust the range depending on the number of pages
+        time.sleep(6)  # wait for the page to load
 
         # Scroll down to the bottom of the page
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(4)  # wait for the page to load
 
-        # Click the "Show More" button
-        show_more_button = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/div[2]/div/a')[0]
-        show_more_button.click()
+        # Extract dates
+        for i in range(1, 500):  # adjust the range depending on the number of dates on each page
+            xpath = f'//*[@id="Content_C025_Col00"]/div[2]/div/div/div[3]/div/div/div/div/table[2]/tbody/tr[{i}]/td[1]/span'
+            date_elements = driver.find_elements(By.XPATH, xpath)
 
-        # Extract dates and contents
-        date_elements = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/table/tbody/tr/td[1]/span')
-        content_elements = driver.find_elements(By.XPATH, '/html/body/section/div/div/div[2]/div[5]/table/tbody/tr/td[3]')
-
-        # Write dates to the CSV file if the content is either "BoC Interest Rate Decision" or "Interest Rate Decision"
-        for date_element, content_element in zip(date_elements, content_elements):
-            if content_element.text in ["BoC Interest Rate Decision", "Interest Rate Decision", "Interest Rate Mar", "Interest Rate Apr", "Interest Rate Feb", "Interest Rate Jan", "Interest Rate Dec", "Interest Rate Nov", "Interest Rate May", "Interest Rate Jun", "Interest Rate Jul", "Interest Rate Aug", "Interest Rate Sep", "Interest Rate Oct"]:
+            # Write dates to the CSV file
+            for date_element in date_elements:
                 writer.writerow([date_element.text])
 
 # Close the driver
