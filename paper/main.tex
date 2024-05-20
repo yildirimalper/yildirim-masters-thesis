@@ -2,23 +2,33 @@
 \usepackage[english]{babel}
 \usepackage{authblk, amsmath, graphicx}
 \usepackage{natbib, xcolor}
-\usepackage{caption}
+\usepackage{caption, float}
+\usepackage{titling, lipsum}
 \usepackage{tablefootnote}
 
+% setting of the Table of Contents
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Guide for formatting I suppose
 \renewcommand{\baselinestretch}{1.5}
 \usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+% ADJUST THIS TO ANOTHER VERSION
+
 
 \usepackage[flushleft]{threeparttable}
 
-\definecolor{bonnblue}{RGB}{0,79,158}
+
+\definecolor{bonnblue}{RGB}{0,79,158} % RGB values for #004F9E
 
 \usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
 
+
+
 \begin{document}
 
-\include{titlepage}
+%\include{regulartitlepage}
+\include{thesistitlepage}
 
 % ============================================================
 \renewcommand*\contentsname{Table of Contents}
@@ -37,7 +47,7 @@
 
 \input{sections/4-results}
 
-\input{sections/5-conclusion}
+\input{sections/5-discussion}
 
 \pagebreak
 
@@ -48,10 +58,18 @@
 
 \input{sections/appendix}
 
+%====================================
+%====================================
+%====================================
+
 \pagebreak
 
-\textbf{Statement of Authorship:} \\
+\noindent \textbf{Statement of Authorship:} \\
 
 \noindent I hereby confirm that the work presented has been performed and interpreted solely by myself except for where I explicitly identified the contrary. I assure that this work has not been presented in any other form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.
+
+%====================================
+%====================================
+%====================================
 
 \end{document}
