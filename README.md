@@ -1,18 +1,19 @@
-# Master's Thesis
+## Global Real Interest Rate Dynamics and Monetary Policy Announcements
 
 This repository contains the source code and data for my master's thesis project. The project explores the relationship between global financial cycles, long-term government bond yields, and monetary policy decisions.
 
-## Project Overview
+### Project Overview
 
 *to be written*
 
-### Repository Structure
+#### Repository Structure
 ```plain
 ├── src/
 |   ├── data_visualization/
 |   ├── fetch_data/
 |   ├── handle_bond_data/
 |   ├── hillenbrand_replication/
+|   ├── regression_analysis/
 ├── original_data/
 |   ├── australian_bond_yields/
 |   ├── boc_bond_yields/
@@ -23,9 +24,12 @@ This repository contains the source code and data for my master's thesis project
 |   ├── swiss_bond_yields/
 |   ├── gurkaynak2007.xlsx
 |   ├── gurkaynak2010.xls
+|   ├── dxy.csv
+|   ├── long_term_historical_rates.py
 ├── processed_data/
 |   ├── monetary_policy_dates/
 |   ├── yield_data/
+|   ├── control_variables/
 |   ├── hillenbrand_replication.csv
 ├── sandbox/
 ├── figures/
@@ -38,7 +42,7 @@ This repository contains the source code and data for my master's thesis project
 ├── README.md
 ```
 
-## Setup and Installation
+### Setup and Installation
 
 To clone this repository in your local machine,
 
@@ -53,6 +57,6 @@ conda env create -f environment.yml
 conda activate masters_thesis
 ```
 
-## Acknowledgments
+### Acknowledgments
 
-I would like to thank Dr. Janko Heineken for their guidance and support throughout the project.
+I would like to thank Dr. Janko Heineken for his guidance and support throughout the project.
