@@ -8,7 +8,7 @@ import seaborn as sns
 from utils.time_windows import create_3d_window, create_5d_window, create_7d_window
 
 PROJECT_DIR = Path().resolve()
-data = pd.read_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'uk_spot_yields.pkl')
+data = pd.read_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'canadian_spot_yields.pkl')
 
 column_names = ["BoC MP Dates"]
 mpdd = pd.read_csv("processed_data/monetary_policy_dates/boc_mpd.csv", header=None, names=column_names)
@@ -20,8 +20,8 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-#data = data.loc[data.index >= '1997-06-01']
-data = data.loc[data.index >= '2008-01-01']
+data = data.loc[data.index >= '1999-01-01']
+#data = data.loc[data.index >= '2008-01-01']
 
 # For BoC
 mpdd["BoC 3dWindow"] = mpdd["BoC MP Dates"].apply(create_3d_window)
@@ -53,6 +53,7 @@ data["In Fed 5dWindow"] = data.index.isin(fed_five_day_windows)
 data["In Fed 7dWindow"] = data.index.isin(fed_seven_day_windows)
 
 data.rename(columns={"10.0yr" : "10yr"}, inplace=True)
+data['10yr'] = pd.to_numeric(data['10yr'], errors='coerce')
 
 # Calculate the "10yr" change for each date in the `data` DataFrame.
 data["10yr Change"] = data["10yr"].diff()
@@ -75,8 +76,8 @@ data["Fed 10yr - Outside 3dWindow Change"] = data["10yr Change"].where(~data["In
 data["Fed 10yr - Outside 5dWindow Change"] = data["10yr Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed 10yr - Outside 7dWindow Change"] = data["10yr Change"].where(~data["In Fed 7dWindow"], 0)
 
-data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_uk_spot_yields.csv')
-data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_uk_spot_yields.pkl')
+data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_canadian_spot_yields.csv')
+data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_canadian_spot_yields.pkl')
 
 # ===============================================================================
 # Plot 10y yield over time
@@ -100,12 +101,12 @@ data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change
 data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change Cumulative"].ffill()
 
 plt.figure(figsize=(10, 6))
-plt.plot(data.index, data["10yr Change Cumulative"], label="10y UK gilt yield", color="dimgrey")
-plt.plot(data.index, data["BoC 10yr - 3dWindow Change Cumulative"], label="10y UK gilt yield change around the BoC meetings", color="blue")
-plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y UK gilt yield change around the Fed meetings", color="red")
+plt.plot(data.index, data["10yr Change Cumulative"], label="10y Canadian bond yield ", color="dimgrey")
+plt.plot(data.index, data["BoC 10yr - 3dWindow Change Cumulative"], label="10y Canadian bond yield change around the BoC meetings", color="blue")
+plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y Canadian bond yield change around the Fed meetings", color="red")
 plt.title("3-day windows around the BoC and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'uk_gilts_2008_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'uk_gilts_2008_figure1a.png')
 plt.show()
