@@ -8,7 +8,7 @@ import seaborn as sns
 from utils.time_windows import create_3d_window, create_5d_window, create_7d_window
 
 PROJECT_DIR = Path().resolve()
-data = pd.read_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'australian_zero_cpn_spot_yields.pkl')
+data = pd.read_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'australian_spot_yields.pkl')
 
 column_names = ["RBA MP Dates"]
 mpdd = pd.read_csv("processed_data/monetary_policy_dates/rba_mpd.csv", header=None, names=column_names)
@@ -20,6 +20,8 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
+
+data.rename(columns={"10yr - AG" : "10yr"}, inplace=True)
 
 # For RBA
 mpdd["RBA 3dWindow"] = mpdd["RBA MP Dates"].apply(create_3d_window)
@@ -93,5 +95,5 @@ plt.title("3-day windows around the RBA and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'australian_bonds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'australian_bonds_figure1a.png')
 plt.show()
