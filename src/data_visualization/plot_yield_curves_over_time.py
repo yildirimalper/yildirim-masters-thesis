@@ -58,6 +58,6 @@ ax.set_ylabel('Maturity')
 ax.set_zlabel('Yield (\%)')
 
 # Save figure
-plt.savefig('figures/yield_curves/boe_yield_curve.png', format='png', dpi=300)
+plt.savefig('figs/yield_curves/boe_yield_curve.png', format='png', dpi=300)
 
 plt.show()

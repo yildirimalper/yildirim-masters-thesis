@@ -46,5 +46,5 @@ plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
 plt.axhline(0, color='black', linewidth=0.5, alpha=0.5)  # Add horizontal line at zero
 plt.legend(fontsize='large')
 plt.tight_layout()
-plt.savefig('figures/long-term-rates1.png', format='png', dpi=300)
+plt.savefig('figs/long-term-rates1.png', format='png', dpi=300)
 plt.show()

@@ -71,7 +71,7 @@ plt.title("3-day windows around the SNB meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb_3d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb_3d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -88,7 +88,7 @@ plt.title("Days outside 3-day SNB window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb_3d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb_3d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -108,7 +108,7 @@ plt.title("5-day windows around the SNB meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb_5d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb_5d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -125,7 +125,7 @@ plt.title("Days outside 5-day SNB window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb_5d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb_5d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -145,7 +145,7 @@ plt.title("7-day windows around the SNB meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb_7d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb_7d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -164,5 +164,5 @@ plt.title("Days outside 7-day SNB window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'snb_mpd' / 'snb__7d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'snb_mpd' / 'snb__7d_10y_yield_outside-window_cumulative_change.png')
 plt.show()

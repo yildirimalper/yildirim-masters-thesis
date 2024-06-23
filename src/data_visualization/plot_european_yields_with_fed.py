@@ -70,7 +70,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_3d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_3d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -88,7 +88,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_3d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_3d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -107,7 +107,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_5d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_5d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -125,7 +125,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_5d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_5d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -144,7 +144,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_7d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_7d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -162,7 +162,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.xlim(data.index.min(), datetime.datetime(2021, 6, 30))
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'fed_mpd' / 'fed_7d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'fed_mpd' / 'fed_7d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # Export data

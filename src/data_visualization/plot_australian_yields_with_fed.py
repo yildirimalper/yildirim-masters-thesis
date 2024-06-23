@@ -72,7 +72,7 @@ plt.title("3-day windows around the Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed_3d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed_3d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -89,7 +89,7 @@ plt.title("Days outside 3-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed_3d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed_3d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -109,7 +109,7 @@ plt.title("5-day windows around the Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed_5d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed_5d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -126,7 +126,7 @@ plt.title("Days outside 5-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed_5d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed_5d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -146,7 +146,7 @@ plt.title("7-day windows around the Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed_7d_10y_yield_in-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed_7d_10y_yield_in-window_cumulative_change.png')
 plt.show()
 
 # ===============================================================================
@@ -165,5 +165,5 @@ plt.title("Days outside 7-day Fed window", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'rba_mpd' / 'fed__7d_10y_yield_outside-window_cumulative_change.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'rba_mpd' / 'fed__7d_10y_yield_outside-window_cumulative_change.png')
 plt.show()
