@@ -27,7 +27,8 @@ data.rename(columns={"1y Yield" : "1yr",
                     inplace=True)
 
 data.set_index('Date', inplace=True)
-data = data.loc[data.index >= '1999-01-01']
+#data = data.loc[data.index >= '1999-01-01']
+data = data.loc[data.index >= '2008-01-01']
 
 # For ECB
 mpdd["ECB 3dWindow"] = mpdd["ECB MP Dates"].apply(create_3d_window)
@@ -99,5 +100,5 @@ plt.title("3-day windows around the ECB and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'german_bunds_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / '2008_german_bunds_figure1a.png')
 plt.show()

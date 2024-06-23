@@ -1,0 +1,14 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Related Literature}{1}{section.2}%
+\contentsline {section}{\numberline {3}Data and Institutional Background}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Eurozone}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}United Kingdom}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Switzerland}{3}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Japan}{4}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Australia}{4}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Canada}{4}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Empirical Strategy}{4}{section.4}%
+\contentsline {section}{\numberline {5}Results}{5}{section.5}%
+\contentsline {section}{\numberline {6}Conclusion}{7}{section.6}%
+\contentsline {section}{Appendix}{9}{section*.5}%

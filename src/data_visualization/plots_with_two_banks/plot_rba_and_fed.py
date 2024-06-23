@@ -20,6 +20,7 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
+data = data.loc[data.index >= '2008-01-01']
 
 data.rename(columns={"10yr - AG" : "10yr"}, inplace=True)
 
@@ -88,12 +89,12 @@ data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change
 data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change Cumulative"].ffill()
 
 plt.figure(figsize=(10, 6))
-plt.plot(data.index, data["10yr Change Cumulative"], label="10y UK gilt yield", color="dimgrey")
+plt.plot(data.index, data["10yr Change Cumulative"], label="10y Australian bond yield", color="dimgrey")
 plt.plot(data.index, data["RBA 10yr - 3dWindow Change Cumulative"], label="10y Australian bond yield change around the RBA meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y Australian bond yield change around the Fed meetings", color="red")
 plt.title("3-day windows around the RBA and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-#plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'australian_bonds_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / '2008_australian_bonds_figure1a.png')
 plt.show()

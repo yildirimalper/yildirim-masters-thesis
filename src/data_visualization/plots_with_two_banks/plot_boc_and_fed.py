@@ -20,8 +20,8 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-data = data.loc[data.index >= '1999-01-01']
-#data = data.loc[data.index >= '2008-01-01']
+#data = data.loc[data.index >= '1999-01-01']
+data = data.loc[data.index >= '2008-01-01']
 
 # For BoC
 mpdd["BoC 3dWindow"] = mpdd["BoC MP Dates"].apply(create_3d_window)
@@ -108,5 +108,5 @@ plt.title("3-day windows around the BoC and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-#plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'uk_gilts_2008_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / '2008_canadian_bond_figure1a.png')
 plt.show()

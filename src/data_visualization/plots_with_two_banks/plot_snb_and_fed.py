@@ -21,6 +21,7 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 # Convert the index to datetime and filter the data first
 data['Date'] = pd.to_datetime(data['Date'])
 data.set_index('Date', inplace=True)
+#data = data.loc[data.index >= '2000-01-01']
 data = data.loc[data.index >= '2000-01-01']
 
 # For SNB
@@ -93,5 +94,5 @@ plt.title("3-day windows around the SNB and Fed meetings", fontsize=14)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / 'swiss_bonds_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figures' / 'two_bank_figures' / '2008_swiss_bonds_figure1a.png')
 plt.show()
