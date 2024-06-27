@@ -20,8 +20,8 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-#data = data.loc[data.index >= '1999-01-01']
-data = data.loc[data.index >= '2008-01-01']
+data = data.loc[data.index >= '1999-01-01']
+#data = data.loc[data.index >= '2008-01-01']
 
 # For BoC
 mpdd["BoC 3dWindow"] = mpdd["BoC MP Dates"].apply(create_3d_window)
@@ -80,18 +80,6 @@ data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_canadian_spot_
 data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_canadian_spot_yields.pkl')
 
 # ===============================================================================
-# Plot 10y yield over time
-# ===============================================================================
-d3_data = data["10yr"].resample('3D').mean()
-
-# Plot the data
-plt.figure(figsize=(10, 6))
-plt.plot(d3_data.index, d3_data)
-plt.title("10y UK Gilt Yield")
-plt.tight_layout()
-plt.show()
-
-# ===============================================================================
 # Plot 10y Canadian Cumulative Yield Change (Hillenbrand, Figure 1, Panel A)
 # ===============================================================================
 data["10yr Change Cumulative"] = data["10yr"].diff().cumsum()
@@ -104,9 +92,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10yr Change Cumulative"], label="10y Canadian bond yield ", color="dimgrey")
 plt.plot(data.index, data["BoC 10yr - 3dWindow Change Cumulative"], label="10y Canadian bond yield change around the BoC meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y Canadian bond yield change around the Fed meetings", color="red")
-plt.title("3-day windows around the BoC and Fed meetings", fontsize=14)
+plt.title("Cumulative Yield Change in Canadian Government Bonds", fontsize=16)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
-plt.legend(loc='lower left')
+plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_canadian_bond_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_canadian_bond_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_canadian_bond_figure1a.png')
 plt.show()

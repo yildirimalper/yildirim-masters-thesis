@@ -27,8 +27,9 @@ data.rename(columns={"1y Yield" : "1yr",
                     inplace=True)
 
 data.set_index('Date', inplace=True)
-#data = data.loc[data.index >= '1999-01-01']
-data = data.loc[data.index >= '2008-01-01']
+#data = data.loc[data.index >= '1997-06-01']
+data = data.loc[data.index >= '1999-01-01']
+#data = data.loc[data.index >= '2008-01-01']
 
 # For ECB
 mpdd["ECB 3dWindow"] = mpdd["ECB MP Dates"].apply(create_3d_window)
@@ -96,9 +97,11 @@ plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10yr Change Cumulative"], label="10y German bund yield", color="dimgrey")
 plt.plot(data.index, data["ECB 10yr - 3dWindow Change Cumulative"], label="10y German bund yield change around the ECB meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y German bund yield change around the Fed meetings", color="red")
-plt.title("3-day windows around the ECB and Fed meetings", fontsize=14)
+plt.title("Cumulative Yield Change in German Bunds", fontsize=16)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
-plt.legend(loc='lower left')
+plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
-plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_german_bunds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_german_bunds_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_german_bunds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_german_bunds_figure1a.png')
 plt.show()

@@ -22,7 +22,7 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 data['Date'] = pd.to_datetime(data['Date'])
 data.set_index('Date', inplace=True)
 #data = data.loc[data.index >= '2000-01-01']
-data = data.loc[data.index >= '2000-01-01']
+data = data.loc[data.index >= '2008-01-01']
 
 # For SNB
 mpdd["SNB 3dWindow"] = mpdd["SNB MP Dates"].apply(create_3d_window)
@@ -90,9 +90,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(data.index, data["10yr Change Cumulative"], label="10y UK gilt yield", color="dimgrey")
 plt.plot(data.index, data["SNB 10yr - 3dWindow Change Cumulative"], label="10y Swiss bond yield change around the SNB meetings", color="blue")
 plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y Swiss bond yield change around the Fed meetings", color="red")
-plt.title("3-day windows around the SNB and Fed meetings", fontsize=14)
+plt.title("Cumulative Yield Change in Swiss Confederation Bonds", fontsize=16)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
-plt.legend(loc='lower left')
+plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2000_swiss_bonds_figure1a.png')
 plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_swiss_bonds_figure1a.png')
 plt.show()
