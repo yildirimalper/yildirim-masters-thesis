@@ -1,11 +1,17 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[english]{babel}
 \usepackage{authblk, amsmath, graphicx}
-\usepackage{natbib, xcolor}
-\usepackage{caption, float}
+\usepackage{natbib}
+\usepackage{caption, float, subfigure}
 \usepackage{adjustbox}
+\usepackage{booktabs, caption}
+\usepackage[table, xcdraw]{xcolor}
 \usepackage{titling, lipsum}
 \usepackage{tablefootnote}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
 % setting of the Table of Contents
 \usepackage{tocloft}
@@ -14,22 +20,19 @@
 % Guide for formatting I suppose
 \renewcommand{\baselinestretch}{1.5}
 \usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-% ADJUST THIS TO ANOTHER VERSION
 
-
-\usepackage[flushleft]{threeparttable}
+%\usepackage[flushleft]{threeparttable}
 
 
 \definecolor{bonnblue}{RGB}{0,79,158} % RGB values for #004F9E
 
-\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=bonnblue, citecolor=bonnblue]{hyperref}
 
 
 
 \begin{document}
 
-%\include{regulartitlepage}
-\include{thesistitlepage}
+\include{titlepage}
 
 % ============================================================
 \renewcommand*\contentsname{Table of Contents}
@@ -38,7 +41,6 @@
 
 \newpage
 \setcounter{page}{1}
-%============================================================
 
 \input{sections/1-intro}
 
@@ -46,11 +48,13 @@
 
 \input{sections/3-data}
 
-\input{sections/4-empirical}
+\input{sections/4-descriptive}
 
-\input{sections/5-results}
+\input{sections/5-empirical}
 
-\input{sections/6-conclusion}
+\input{sections/6-results}
+
+\input{sections/7-conclusion}
 
 \pagebreak
 
@@ -61,18 +65,10 @@
 
 \input{sections/appendix}
 
-%====================================
-%====================================
-%====================================
-
 \pagebreak
 
 \noindent \textbf{Statement of Authorship:} \\
 
 \noindent I hereby confirm that the work presented has been performed and interpreted solely by myself except for where I explicitly identified the contrary. I assure that this work has not been presented in any other form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.
-
-%====================================
-%====================================
-%====================================
 
 \end{document}

@@ -1,14 +1,21 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}Related Literature}{1}{section.2}%
-\contentsline {section}{\numberline {3}Data and Institutional Background}{2}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Eurozone}{2}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}United Kingdom}{3}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Switzerland}{3}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Japan}{4}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Australia}{4}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Canada}{4}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Empirical Strategy}{4}{section.4}%
-\contentsline {section}{\numberline {5}Results}{5}{section.5}%
-\contentsline {section}{\numberline {6}Conclusion}{7}{section.6}%
-\contentsline {section}{Appendix}{9}{section*.5}%
+\contentsline {section}{\numberline {2}Related Literature}{2}{section.2}%
+\contentsline {section}{\numberline {3}Data and Institutional Background}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Eurozone}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}United Kingdom}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Japan}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Canada}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Switzerland}{5}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Australia}{6}{subsection.3.6}%
+\contentsline {section}{\numberline {4}The Decline in Interest Rates and Monetary Policy}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}German Bund Yields}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}UK Gilt Yields}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Japanese Government Bond (JGB) Yields}{8}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Canadian Bond Yields}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Swiss Confederation Bond Yields}{10}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Australian Government Bond Yields}{12}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Empirical Strategy}{13}{section.5}%
+\contentsline {section}{\numberline {6}Results}{13}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}%
+\contentsline {section}{Appendix}{16}{section*.14}%

@@ -1,0 +1,9 @@
+\section{Empirical Strategy}
+
+In order to test the statistical significance of this relationship, I regress the daily yield change of 10-year government bonds on the 3-day window of both national and the U.S. monetary policy decisions, and quantitative easing variables, to strip the yield effect of QEs out, such that the specification is:
+\begin{align} \notag
+    \Delta_{t-1, t} 10\textrm{yr} &= \beta_0 + \beta_1\, \textrm{Dummy(3-day MP Window)}_{t} + \\ \notag
+    & \quad \beta_2\, \textrm{Dummy(3-day FOMC Window)}_{t} + \\ \notag
+    & \quad \beta_3\, \textrm{Dummy(QE)}_{t,s} + \beta_4 \, \textrm{Dummy(QE)}_{t, \textrm{US}}+ \mathbf{Z}_t + \varepsilon_t
+\end{align}
+where $\Delta_{t-1, t} 10\textrm{yr}$ represents the yield change of 10-year government bond from $t-1$ to $t$. While $\textrm{MP Window}_{t}$ represents domestic 3-day window, $\textrm{FOMC Window}_{t}$ is the U.S. monetary policy. QE variables are by construction dummy, and the domestic and U.S. quantitative easing variables, respectively. $\mathbf{Z}_t$ denotes the set of control variables to avoid potential endogeneity problems. Since the on-the-run bond prices are determined in the market through the supply and demand, (1) US Dollar Index to measure the strength of the U.S. dollar against a basket of currencies, (2) CBOE Volatility Index to capture market sentiment and volatility as both might impact investors' preferences, (3) Index of Global Real Economic Activity to capture the state of global real economic activity (developed by \citet{kilian2009not, kilian2019measuring}), are included in the matrix of control variables, $\mathbf{Z}_t$.
