@@ -21,8 +21,8 @@ fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
 #data = data.loc[data.index >= '1997-06-01']
-data = data.loc[data.index >= '1999-01-01']
-#data = data.loc[data.index >= '2008-01-01']
+#data = data.loc[data.index >= '1999-01-01']
+data = data.loc[data.index >= '2008-01-01']
 #data = data.loc[data.index >= '2012-01-01']
 
 data.rename(columns={"10yr - AG" : "10yr"}, inplace=True)
@@ -100,7 +100,7 @@ plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_australian_bonds_figure1a.png')
-plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_australian_bonds_figure1a.png')
-#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_australian_bonds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_australian_bonds_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_australian_bonds_figure1a.png')
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2012_australian_bonds_figure1a.png')
 plt.show()

@@ -29,8 +29,8 @@ data.rename(columns={"1y Yield" : "1yr",
 data["Date"] = pd.to_datetime(data["Date"])
 data.set_index('Date', inplace=True)
 #data = data.loc[data.index >= '1997-06-01']
-data = data.loc[data.index >= '1999-01-01']
-#data = data.loc[data.index >= '2008-01-01']
+#data = data.loc[data.index >= '1999-01-01']
+data = data.loc[data.index >= '2008-01-01']
 
 # For ECB
 mpdd["ECB 3dWindow"] = mpdd["ECB MP Dates"].apply(create_3d_window)
@@ -82,8 +82,8 @@ data["Fed real_interest_rate - Outside 3dWindow Change"] = data["real_interest_r
 data["Fed real_interest_rate - Outside 5dWindow Change"] = data["real_interest_rate Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed real_interest_rate - Outside 7dWindow Change"] = data["real_interest_rate Change"].where(~data["In Fed 7dWindow"], 0)
 
-data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'deneme.csv')
-data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_german_spot_yields.pkl')
+#data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'deneme.csv')
+#data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_german_spot_yields.pkl')
 
 # ===============================================================================
 # Plot 10y British Cumulative Yield Change (Hillenbrand, Figure 1, Panel A)
@@ -102,7 +102,7 @@ plt.title("Cumulative Yield Change in German Bunds", fontsize=16)
 plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
 plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
-#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '1997_german_bunds_figure1a.png')
-#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '1999_german_bunds_figure1a.png')
-#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '2008_german_bunds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '1997_german_real_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '1999_german_real_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_real_rates' / '2008_german_real_figure1a.png')
 plt.show()

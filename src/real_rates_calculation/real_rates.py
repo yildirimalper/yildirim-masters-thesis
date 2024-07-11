@@ -43,7 +43,6 @@ merged_data = pd.merge(yields, inf, on='year', how='inner')
 merged_data['real_interest_rate'] = ((1 + merged_data['10yr']/100) / (1 + merged_data['inflation']/100) - 1)*100
 merged_data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'japan_real_rates.csv', index=False)
 
-#! There is a problem with this
 # =============================================================================
 # 4. Canada
 # =============================================================================
@@ -56,6 +55,7 @@ yields['year'] = yields['Date'].dt.year
 yields['year'] = pd.to_datetime(yields['year'], format='%Y')
 merged_data = pd.merge(yields, inf, on='year', how='inner')
 merged_data['10.0yr'] = merged_data['10.0yr'].replace('na', np.nan)
+merged_data['10.0yr'] = pd.to_numeric(merged_data['10.0yr'], errors='coerce')
 merged_data['real_interest_rate'] = ((1 + merged_data['10.0yr']/100) / (1 + merged_data['inflation']/100) - 1)*100
 merged_data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'canada_real_rates.csv', index=False)
 
