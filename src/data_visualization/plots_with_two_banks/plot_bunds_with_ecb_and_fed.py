@@ -18,6 +18,10 @@ column_names = ["Fed MP Dates"]
 fed_mpdd = pd.read_csv("processed_data/monetary_policy_dates/fed_mpd.csv", header=None, names=column_names)
 fed_mpdd["Fed MP Dates"] = pd.to_datetime(fed_mpdd["Fed MP Dates"])
 
+fed_yields = pd.read_excel(PROJECT_DIR / "original_data" / "gurkaynak2007.xlsx", sheet_name="Yields", index_col=0)
+fed_yields.rename(columns={"SVENY10": "US10yr"}, inplace=True)
+fed_yields.index = pd.to_datetime(fed_yields.index)
+
 data.rename(columns={"1y Yield" : "1yr",
                     "2y Yield"  : "2yr",
                     "5y Yield"  : "5yr",
@@ -62,6 +66,8 @@ data["In Fed 7dWindow"] = data.index.isin(fed_seven_day_windows)
 
 # Calculate the "10yr" change for each date in the `data` DataFrame.
 data["10yr Change"] = data["10yr"].diff()
+data['US10yr'] = fed_yields['US10yr']
+data['US10yr Change'] = data['US10yr'].diff()
 
 # For ECB
 data["ECB 10yr - 3dWindow Change"] = data["10yr Change"].where(data["In ECB 3dWindow"], 0)
@@ -81,8 +87,8 @@ data["Fed 10yr - Outside 3dWindow Change"] = data["10yr Change"].where(~data["In
 data["Fed 10yr - Outside 5dWindow Change"] = data["10yr Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed 10yr - Outside 7dWindow Change"] = data["10yr Change"].where(~data["In Fed 7dWindow"], 0)
 
-data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_german_spot_yields.csv')
-data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'proc_german_spot_yields.pkl')
+data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'reg_german_spot_yields.csv')
+data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'reg_german_spot_yields.pkl')
 
 # ===============================================================================
 # Plot 10y British Cumulative Yield Change (Hillenbrand, Figure 1, Panel A)
