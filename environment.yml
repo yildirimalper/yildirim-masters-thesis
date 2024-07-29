@@ -21,4 +21,13 @@ dependencies:
   - setuptools_scm
   - statsmodels
   - toml
-  - pip: [-e ., kaleido, pdbp, xlrd]
+  - matplotlib
+  - seaborn
+  - selenium
+  - requests
+  - pip:
+      - -e .
+      - kaleido
+      - pdbp
+      - xlrd
+      - stargazer
