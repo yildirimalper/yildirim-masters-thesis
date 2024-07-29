@@ -24,8 +24,8 @@ fed_yields.index = pd.to_datetime(fed_yields.index)
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-data = data.loc[data.index >= '1997-06-01']
-#data = data.loc[data.index >= '1999-01-01']
+#data = data.loc[data.index >= '1997-06-01']
+data = data.loc[data.index >= '1999-01-01']
 #data = data.loc[data.index >= '2008-01-01']
 
 # For BoE
@@ -80,6 +80,14 @@ data["Fed 10yr - Outside 3dWindow Change"] = data["10yr Change"].where(~data["In
 data["Fed 10yr - Outside 5dWindow Change"] = data["10yr Change"].where(~data["In Fed 5dWindow"], 0)
 data["Fed 10yr - Outside 7dWindow Change"] = data["10yr Change"].where(~data["In Fed 7dWindow"], 0)
 
+data["Combined - 3dWindow Change"] = data["BoE 10yr - 3dWindow Change"] + data["Fed 10yr - 3dWindow Change"]
+data["Combined - 5dWindow Change"] = data["BoE 10yr - 5dWindow Change"] + data["Fed 10yr - 5dWindow Change"]
+data["Combined - 7dWindow Change"] = data["BoE 10yr - 7dWindow Change"] + data["Fed 10yr - 7dWindow Change"]
+
+data["Combined - Outside 3dWindow Change"] = data["BoE 10yr - Outside 3dWindow Change"] + data["Fed 10yr - Outside 3dWindow Change"]
+data["Combined - Outside 5dWindow Change"] = data["BoE 10yr - Outside 5dWindow Change"] + data["Fed 10yr - Outside 5dWindow Change"]
+data["Combined - Outside 7dWindow Change"] = data["BoE 10yr - Outside 7dWindow Change"] + data["Fed 10yr - Outside 7dWindow Change"]
+
 data.to_csv(PROJECT_DIR / 'processed_data' / 'yield_data' / 'reg_uk_spot_yields.csv')
 data.to_pickle(PROJECT_DIR / 'processed_data' / 'yield_data' / 'reg_uk_spot_yields.pkl')
 
@@ -102,5 +110,26 @@ plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_uk_gilts_figure1a.png')
 plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_uk_gilts_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_uk_gilts_figure1a.png')
+plt.show()
+
+# ===============================================================================
+# Combined Change
+# ===============================================================================
+data["10yr Change Cumulative"] = data["10yr"].diff().cumsum()
+data["Combined - 3dWindow Change Cumulative"] = data["Combined - 3dWindow Change"].cumsum()
+data["Combined - 3dWindow Change Cumulative"] = data["Combined - 3dWindow Change Cumulative"].ffill()
+
+plt.figure(figsize=(10, 6))
+plt.plot(data.index, data["10yr Change Cumulative"], label="10y UK gilt yield", color="dimgrey")
+plt.plot(data.index, data["BoE 10yr - 3dWindow Change Cumulative"], label="10y UK gilt yield change around the BoE meetings", color="blue", linestyle=':', linewidth=1)
+plt.plot(data.index, data["Fed 10yr - 3dWindow Change Cumulative"], label="10y UK gilt yield change around the Fed meetings", color="red", linestyle=':', linewidth=1)
+plt.plot(data.index, data["Combined - 3dWindow Change Cumulative"], label="10y UK gilt yield change around both meetings", color="purple")
+plt.title("Cumulative Yield Change in the UK Gilts", fontsize=16)
+plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
+plt.legend(loc='lower left', fontsize=12)
+plt.tight_layout()
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_uk_gilts_figure1a.png')
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1999_uk_gilts_figure1a_combined.png')
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_uk_gilts_figure1a.png')
 plt.show()
