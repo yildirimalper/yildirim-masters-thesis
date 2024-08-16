@@ -103,5 +103,43 @@ plt.legend(loc='lower left', fontsize=12)
 plt.tight_layout()
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1989_japanese_bonds_figure1a.png')
 #plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_japanese_bonds_figure1a.png')
-plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_japanese_bonds_figure1a.png')
+#plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '2008_japanese_bonds_figure1a.png')
+plt.show()
+
+# ===============================================================================
+# Plot 10y Japanese Cumulative Yield Change (Hillenbrand, Figure 1, Panel B)
+data["10yr Change Cumulative"] = data["10yr"].diff().cumsum()
+data["BoJ 10yr - 3dWindow Change Cumulative"] = data["BoJ 10yr - 3dWindow Change"].cumsum()
+data["BoJ 10yr - 3dWindow Change Cumulative"] = data["BoJ 10yr - 3dWindow Change Cumulative"].ffill()
+data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change"].cumsum()
+data["Fed 10yr - 3dWindow Change Cumulative"] = data["Fed 10yr - 3dWindow Change Cumulative"].ffill()
+
+# Split the data at the year 2008
+split_date = '2008-01-01'
+data_before_2008 = data[data.index < split_date]
+data_after_2008 = data[data.index >= split_date]
+
+# Adjust the Fed cumulative values to start where the BoJ cumulative values end
+last_boj_value = data_before_2008["BoJ 10yr - 3dWindow Change Cumulative"].iloc[-1]
+data_after_2008["Fed 10yr - 3dWindow Change Cumulative"] += last_boj_value
+
+# Shift the Fed cumulative values by 0.2
+data_after_2008["Fed 10yr - 3dWindow Change Cumulative"] -= 0.3
+
+plt.figure(figsize=(10, 6))
+
+# Plot BoJ line up until 2008
+plt.plot(data_before_2008.index, data_before_2008["BoJ 10yr - 3dWindow Change Cumulative"], label="10y Japanese bond yield change around the BoJ meetings (before 2008)", color="blue")
+
+# Plot Fed line from 2008 onwards
+plt.plot(data_after_2008.index, data_after_2008["Fed 10yr - 3dWindow Change Cumulative"], label="10y Japanese bond yield change around the Fed meetings (from 2008)", color="red")
+
+# Plot the overall 10yr Change Cumulative line
+plt.plot(data.index, data["10yr Change Cumulative"], label="10y Japanese bond yield", color="dimgrey")
+
+plt.title("Cumulative Yield Change in Japanese Government Bonds (JGBs)", fontsize=16)
+plt.ylabel("Cumulative Yield Change (%)", fontsize=12)
+plt.legend(loc='lower left', fontsize=12)
+plt.tight_layout()
+plt.savefig(PROJECT_DIR / 'figs' / 'two_bank_figures' / '1997_japanese_mixed.png')
 plt.show()

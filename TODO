@@ -1,0 +1,4 @@
+- Check the date interval for all potential master data
+- Create master_data code in that folder respectively
+- Find TED spread, Term spread, inflation, oil price, and bid-ask spread for Treasury data
+- Think more about the empirical specification

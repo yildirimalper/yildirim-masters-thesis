@@ -24,10 +24,10 @@ fed_yields.index = pd.to_datetime(fed_yields.index)
 
 # Convert the index to datetime and filter the data first
 data.index = pd.to_datetime(data.index)
-data = data.loc[data.index >= '1997-01-01']
+#data = data.loc[data.index >= '1997-01-01']
 #data = data.loc[data.index >= '1999-01-01']
 #data = data.loc[data.index >= '2008-01-01']
-#data = data.loc[data.index >= '2012-01-01']
+data = data.loc[data.index >= '2012-01-01']
 
 data.rename(columns={"10yr - AG" : "10yr"}, inplace=True)
 
