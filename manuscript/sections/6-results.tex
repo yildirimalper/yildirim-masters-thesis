@@ -1,5 +1,25 @@
 \section{Results}
 
+The results are presented in two stages in Table \ref{tab:output} and \ref{tab:betas}. As daily yield changes are not very large in magnitude, the standardized beta coefficients presented in Table \ref{tab:betas} demonstrates the economic significance better.
 
-\newpage
+\subsection{Impact of the Fed Announcements on Bond Yields}
+
+In the first three columns of Table \ref{tab:output} and \ref{tab:betas}, I present the results of regressions that were run as a statistical test rather than to infer causality. The coefficients of $\textrm{D(3d FOMC})$ indicates the effect of 3-day windows around the FOMC meetings on the yield changes. In both Column 1 and 3, the effect is negative and statistically significant at the 10\% level. In a 3-day window around the FOMC meeting, the 10-year bond yields decline by -0.45 basis points. While the effect is significant at the 10\% level, the p-values are close to 0.05 level, e.g., 0.053 and 0.057 in Column 1 and 3, respectively. This implies that the findings are just marginally significant and should be treated cautiously since their significance might be impacted by little adjustments to the model specification. \\
+
+The economic magnitude of this decline, however, is relatively small. A potential explanation for this is the strong heterogeneity among countries, observed in Section 4. For example, while the effect of the Fed announcements over the Swiss government bonds appears to be a white noise or the effect over the Australian bonds is remarkably less strong, the German bund yields or Canadian bond yields co-move with the Fed decision windows strongly. In the former cases, currency interventions or national financial conditions may dilute the transmission of US monetary policy to their long-term interest rates. In other words, countries in which the observed effect is less strong drives the overall effect towards a smaller magnitude.
+
+\input{tables/outputs}
+
+
+\subsection{The Role of Financial Frictions}
+
+Columns 2 and 3 of Tables 2 and 3 introduce the role of financial frictions in the FX markets, as captured by the Corwin-Schultz bid-ask spread estimator. The results show that, at the 10\% significance level, higher FX frictions---lower market liquidity and higher transaction costs---around the FOMC meetings contribute to the decline of the bond yields. This result could indicate that uncertainty around the Fed's monetary policy decisions cause increased demand of the long-term government bonds by the local and foreign investors, potentially through a ``home bias'' and safe-haven effect, respectively. The increased demand induced by the higher uncertainty around the Fed decisions would push the long-term bond prices higher in the sample, and in turn, bond yields declines. Nevertheless, as previously mentioned, these results in the first three columns cannot be treated as the causal effect due to the endogeneity concerns. Rather, these regressions are for the purpose of statistical testing.
+
+\input{tables/outputs_beta}
+
+In the 4th and 5th columns, the interaction between the FOMC decision windows and the financial frictions is incorporated. In both specifications, the statistical significance of the 3-day Fed windows disappear, meaning that the null hypothesis of no effect cannot be rejected, while the sign of the coefficient for the interaction term is positive. This means that given the presence of higher FX market frictions, there exists less spillovers around the 3-day FOMC windows, i.e., less decline is observed in the bond yields. This can be interpreted as the existence of FX frictions dilutes the transmission of the US monetary policy to other advanced economies' long-term bonds. However, while this explanation is intuitive, since the coefficients of 2SLS regressions are not statistically significant, it is not possible to propose any causal inference. Given the lack of statistical significance, further investigation is needed to confirm this relationship.
+
+\subsection{Economic Significance and Heterogeneity Across Countries}
+
+Overall, the results in Table \ref{tab:spillreg} indicate significant cross-border monetary spillovers from the Treasuries to 10-year bonds of selected advanced economies. While these spillovers have larger economic magnitudes in Germany, the United Kingdom and Canada, the effect appears to be weak in Switzerland and Australia. This result is supported by the descriptive evidence in Section 4. Moreover, the results presented in Table \ref{tab:betas} an \ref{tab:output} further indicates that long-term bond yields decline around the 3-day FOMC announcement windows. In Section 6.2., I demonstrate that the FX market frictions have inverse relationship with the bond yields. However, potential heterogeneity in the effect of FX market frictions due to the exchange rate policies and market structures are not investigated in this paper. In sum, the U.S. monetary policy decisions transmit heterogeneously to the long-term interest rates of advanced economies around the 3-day FOMC announcement windows, allowing to extend the results of \citet{hillenbrand2022} circumscriptively to a wider scale, such that the Fed decision windows influence the long-term real interest rates globally.
 

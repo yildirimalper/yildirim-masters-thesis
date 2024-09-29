@@ -1,9 +1,35 @@
 \section{Empirical Strategy}
 
-In order to test the statistical significance of this relationship, I regress the daily yield change of 10-year government bonds on the 3-day window of both national and the U.S. monetary policy decisions, and quantitative easing variables, to strip the yield effect of QEs out, such that the specification is:
-\begin{align} \notag
-    \Delta_{t-1, t} 10\textrm{yr} &= \beta_0 + \beta_1\, \textrm{Dummy(3-day MP Window)}_{t} + \\ \notag
-    & \quad \beta_2\, \textrm{Dummy(3-day FOMC Window)}_{t} + \\ \notag
-    & \quad \beta_3\, \textrm{Dummy(QE)}_{t,s} + \beta_4 \, \textrm{Dummy(QE)}_{t, \textrm{US}}+ \mathbf{Z}_t + \varepsilon_t
-\end{align}
-where $\Delta_{t-1, t} 10\textrm{yr}$ represents the yield change of 10-year government bond from $t-1$ to $t$. While $\textrm{MP Window}_{t}$ represents domestic 3-day window, $\textrm{FOMC Window}_{t}$ is the U.S. monetary policy. QE variables are by construction dummy, and the domestic and U.S. quantitative easing variables, respectively. $\mathbf{Z}_t$ denotes the set of control variables to avoid potential endogeneity problems. Since the on-the-run bond prices are determined in the market through the supply and demand, (1) US Dollar Index to measure the strength of the U.S. dollar against a basket of currencies, (2) CBOE Volatility Index to capture market sentiment and volatility as both might impact investors' preferences, (3) Index of Global Real Economic Activity to capture the state of global real economic activity (developed by \citet{kilian2009not, kilian2019measuring}), are included in the matrix of control variables, $\mathbf{Z}_t$.
+In the previous section, I demonstrated the compelling fact that the 3-day windows around the FOMC meetings capture the decline of the interest rates for some of the selected advanced economies, more effectively than the 3-day monetary policy decision window of the national central banks. While this descriptive evidence suggest that the effect of the narrow time windows around the Fed decisions can explain the yield declines of advanced economies, to establish a causal link, a further empirical specification is required. To enhance the robustness of the causal link, I incorporated financial frictions into the model. Hence, the baseline specification is:
+$$
+\begin{aligned}
+\Delta_{t-1,t}10\textrm{yr}_i &= \beta_0\;+\;\beta_1\,\textrm{D(3d FOMC)}_t\;+\;\beta_2\, \textrm{FXF}_{i,t} \\&\quad +\,\beta_3 \, [\textrm{D(3d FOMC})\,\times\,\textrm{FXF}]_{i,t}\;+ \varepsilon_{i,t}
+\end{aligned}
+$$
+\vspace{-0.25cm}
+
+\noindent where $\Delta_{t-1,t}10\textrm{yr}$ represents the yield change of 10-year government bond from $t-1$ to $t$ for country $i$. The dummy variable, $\textrm{D(3d FOMC)}_t$, for the 3-day FOMC windows takes a value of 1 on the day before, the day of, and the day after the FOMC meeting, and 0 otherwise. $\textrm{FXF}_{i,t}$ denotes the financial frictions in the foreign exchange markets for country $i$ at time $t$, which are measured using the Corwin-Schultz bid-ask spread estimator \citep{corwin2012simple}. I used bid-ask spreads as a proxy to reflect the liquidity conditions in the FX market. The wider spread translates into lower liquidity in the market and higher transaction costs, and particularly, the times of higher uncertainty and financial distress lead deteriorating liquidity and wider bid-ask spreads. For a detailed construction of the Corwin-Schultz estimator, refer to the Appendix. \\
+
+Accounting for financial frictions, I isolate the impact of FOMC meeting windows on yield changes better, distinguishing it from broader market dynamics that could confound the 
+results. Moreover, the interaction term between $\textrm{FXF}_{i,t}$ and $\textrm{D(3d FOMC)}_t$ captures the differential effect of the FX market frictions, e.g., liquidity conditions or transaction costs, during the 3-day FOMC announcement windows. Therefore, $\beta_3$ becomes a paramater of interest, providing further insights on the transmission mechanisms of the U.S. monetary policy decisions to global bond markets. Nonetheless, the main threat to the identification is the potential endogeneity of the financial frictions. This endogeneity may arise from simultaneity or bi-directional causality, whereby bid-ask spreads might influence bond yield change and vice versa. Furthermore, as the Corwin-Schultz bid-ask spread estimator, which utilizes daily high and low prices, relies on FX data collected on-the-run, thus contains the risk of measurement error that could also lead to biased estimates. \\
+
+To address these endogeneity concerns, I employ an instrumental variable (IV) approach, specifically using a lagged one-week averaged bid-ask spreads as an instrument. Since the lagged bid-ask spreads reflect past conditions in the FX market, it is assumed to influence current yield changes but remains unaffected by contemporaneous shocks to the yield. This approach helps to mitigate reverse causality and ensures that the spread is appropriately exogenous in the model. Moreover, the lagged spread is strongly correlated with the current spread, making it a valid instrument. To implement this approach, I use the Two-Stage Least Squares (2SLS) regression technique. In the first stage, I regress the bid-ask spread on the instrument and other exogenous variables, as well as the interaction term on the instruments and exogenous variables:
+
+$$
+\begin{aligned}
+    \widetilde{\textrm{FXF}_t} & = \alpha_0 + \alpha_1 \,\textrm{D(3d FOMC)} + \alpha_2\, Z_t +  + v_t \\
+    \widetilde{[\textrm{D(3d FOMC})\times\textrm{FXF}]_{i,t}} &= \gamma_0 + \gamma_1 \textrm{D(3d FOMC)}_t + \gamma_2 [\textrm{D(3d FOMC})\,\times\,\textrm{FXF}]_{i,t} + \gamma_3 Z_t + w_t
+\end{aligned}
+$$
+\vspace{-0.25cm}
+
+\noindent Using the predicted values from the first stage, we then estimate the second-stage regression, where we regress the yield change on these predicted values and the dummy variable for the FOMC meeting window:
+
+$$
+\begin{aligned}
+\Delta_{t-1,t}10\textrm{yr} &= \beta_0\;+\;\beta_1\,\textrm{D(3d FOMC)}_t\;+\;\beta_2\, \widetilde{\textrm{FXF}_t} \\&\quad +\,\beta_3 \, [\widetilde{\textrm{D(3d FOMC})\times\textrm{FXF}}]_{i,t}\; + \varepsilon_t
+\end{aligned}
+$$
+\vspace{0.25cm}
+
+Hence, while $\beta_1$ parameter is interpreted as the effect of the 3-day Fed decision windows over the yield change of 10-year government bond yields for selected economies, the $\beta_3$ parameter captures the differential effect due to the financial frictions. The result of the 2SLS regression is presented at the (IV) column of Table \ref{tab:output} and \ref{tab:betas}. To ensure the validity of the instrumental variable (IV) approach, I conduct several diagnostic tests that assess the strength and relevance of the instruments used in the model. Testing for the underidentification, the Kleibergen-Paap LM statistic implies that the instruments are not underidentified. Furthermore, due to the potential serial correlation in data-generating process, I do not use the Cragg-Donald Wald F-statistic to test for weak instruments. Instead, using the Kleibergen-Paap rk Wald F-statistic, which requires relatively relaxed assumptions on data-generating process, it is confirmed that the instruments are sufficiently strong, compared to the Stock-Yogo critical values. That is to say, the underidentification and weak instrument concerns are mitigated through the relevant test statistics, i.e., the lagged one-week averaged bid-ask spreads is relevant and has sufficient strength for reliable IV estimates presented in the empirical model.

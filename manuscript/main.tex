@@ -2,13 +2,57 @@
 \usepackage[english]{babel}
 \usepackage{authblk, amsmath, graphicx}
 \usepackage{natbib}
+\usepackage{listings}
 \usepackage{caption, float, subfigure}
 \usepackage{adjustbox}
+\usepackage{placeins}
 \usepackage{booktabs, caption}
 \usepackage[table, xcdraw]{xcolor}
 \usepackage{titling, lipsum}
 \usepackage{tablefootnote}
 \usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+
+\captionsetup{
+    labelfont=bf
+}
+\definecolor{bg}{gray}{0.95}
+\definecolor{lightgray}{rgb}{0.9,0.9,0.9}
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\footnotesize,
+    numbersep=8pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=25pt,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  bottomrule=2pt,
+  toprule=2pt,
+  colback=bg,
+  colframe=lightgray,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[lightgray] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3}
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
@@ -61,14 +105,17 @@
 \bibliographystyle{apalike}
 \bibliography{ref}
 
-\pagebreak
+\newpage
+
+\pagenumbering{roman}
+\setcounter{page}{1}
 
 \input{sections/appendix}
 
-\pagebreak
+ \pagebreak
 
-\noindent \textbf{Statement of Authorship:} \\
+ \noindent \textbf{Statement of Authorship:} \\
 
-\noindent I hereby confirm that the work presented has been performed and interpreted solely by myself except for where I explicitly identified the contrary. I assure that this work has not been presented in any other form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.
+ \noindent I hereby confirm that the work presented has been performed and interpreted solely by myself except for where I explicitly identified the contrary. I assure that this work has not been presented in any other form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.
 
 \end{document}

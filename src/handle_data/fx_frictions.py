@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from utils.corwin_schultz import HLSpreadEstimator
+from bidask import edge
 
 PROJECT_DIR = Path().resolve()
 
@@ -15,6 +16,8 @@ data["Date"] = pd.to_datetime(data["Date"])
 
 data["High"] = data["High"].str.replace(',', '.').astype(float)
 data["Low"] = data["Low"].str.replace(',', '.').astype(float)
+data['Open'] = data['Open'].str.replace(',', '.').astype(float)
+data['Price'] = data['Price'].str.replace(',', '.').astype(float)
 
 # Initialize a list to store the spread values
 spreads = [np.nan]  # First value is NaN because there's no previous day to compare
